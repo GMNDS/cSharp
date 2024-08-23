@@ -15,6 +15,7 @@
             ║                              [2] Subtração ➖                                ║
             ║                              [3] Divisão ➗                                  ║
             ║                              [4] Multiplicação ✖️                             ║
+            ║                              [5] Sair ❌                                     ║
             ╚══════════════════════════════════════════════════════════════════════════════╝
             ");
 
@@ -25,6 +26,7 @@
                 case 2: ReadNums(Subtraction); break;
                 case 3: ReadNums(Division); break;
                 case 4: ReadNums(Multiplication); break;
+                case 5: System.Environment.Exit(0); break;
                 default: {
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
