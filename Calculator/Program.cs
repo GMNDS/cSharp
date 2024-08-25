@@ -1,13 +1,12 @@
-﻿namespace Calculadoa
+﻿namespace GMNDS.Calculator
 {
     class Program 
     {
         static void Main(string[] args) {
             Menu();
         }
-
         static void Menu() {
-            System.Console.WriteLine(@"
+            Console.WriteLine(@"
             ╔══════════════════════════════════════════════════════════════════════════════╗
             ║                          Escolha uma das opções abaixo                       ║
             ║------------------------------------------------------------------------------║
@@ -26,11 +25,11 @@
                 case 2: ReadNums(Subtraction); break;
                 case 3: ReadNums(Division); break;
                 case 4: ReadNums(Multiplication); break;
-                case 5: System.Environment.Exit(0); break;
+                case 5: Environment.Exit(0); break;
                 default: {
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
-                    System.Console.WriteLine(@"                   
+                    Console.WriteLine(@"                   
                     ████████████████████VOCÊ PRECISA DIGITAR UM NÚMERO VÁLIDO████████████████████");
                     Console.ResetColor();
                     Menu();
@@ -39,20 +38,20 @@
         }
         static void ReadNums(Func<double, double, double> operation) {
             while(true){
-                System.Console.WriteLine("Insira o primeiro valor");
+                Console.WriteLine("Insira o primeiro valor");
                 string inputOne = Console.ReadLine();
-                System.Console.WriteLine("Insira o segundo valor");
+                Console.WriteLine("Insira o segundo valor");
                 string inputTwo = Console.ReadLine();
 
                 if (double.TryParse(inputOne, out double valueOne) && double.TryParse(inputTwo, out double valueTwo)) {
                     double op = operation(valueOne, valueTwo);
                                         Console.ForegroundColor = ConsoleColor.Blue;
-                    System.Console.WriteLine($@"                   
+                    Console.WriteLine($@"                   
                     ████████████████████O resultado da operação é {op}████████████████████");
                     Console.ResetColor();
                     Menu();
                 } else {
-                    System.Console.WriteLine("Insira valores válidos válido");
+                    Console.WriteLine("Insira valores válidos válido");
                 }
             }
         }  
