@@ -1,4 +1,6 @@
-﻿namespace GMNDS.Calculator
+﻿using System.Diagnostics;
+
+namespace GMNDS.Calculator
 {
     class Program 
     {
@@ -6,17 +8,18 @@
             Menu();
         }
         static void Menu() {
-            Console.WriteLine(@"
+            Console.Clear();
+            Console.Write(@"
             ╔══════════════════════════════════════════════════════════════════════════════╗
             ║                          Escolha uma das opções abaixo                       ║
             ║------------------------------------------------------------------------------║
             ║                              [1] Soma ➕                                     ║
             ║                              [2] Subtração ➖                                ║
             ║                              [3] Divisão ➗                                  ║
-            ║                              [4] Multiplicação ✖️                             ║
+            ║                              [4] Multiplicação ✖️                            ║
             ║                              [5] Sair ❌                                     ║
             ╚══════════════════════════════════════════════════════════════════════════════╝
-            ");
+                                            ");
 
             short.TryParse(Console.ReadLine(), out short input);
 
@@ -30,25 +33,30 @@
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(@"                   
-                    ████████████████████VOCÊ PRECISA DIGITAR UM NÚMERO VÁLIDO████████████████████");
+                    ████████████████████ VOCÊ PRECISA DIGITAR UM NÚMERO VÁLIDO ████████████████████");
                     Console.ResetColor();
+                    Console.WriteLine("\nPressione qualquer tecla para voltar ao Menu...");
+                    Console.ReadKey();                    
                     Menu();
                     };break;
             }
         }
         static void ReadNums(Func<double, double, double> operation) {
             while(true){
-                Console.WriteLine("Insira o primeiro valor");
+                Console.Write("Insira o primeiro valor: ");
                 string inputOne = Console.ReadLine();
-                Console.WriteLine("Insira o segundo valor");
+                Console.Write("Insira o segundo valor: ");
                 string inputTwo = Console.ReadLine();
 
                 if (double.TryParse(inputOne, out double valueOne) && double.TryParse(inputTwo, out double valueTwo)) {
                     double op = operation(valueOne, valueTwo);
-                                        Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Clear();
                     Console.WriteLine($@"                   
-                    ████████████████████O resultado da operação é {op}████████████████████");
+                    ████████████████████ O resultado da operação é {op} ████████████████████");
                     Console.ResetColor();
+                    Console.WriteLine("\nPressione qualquer tecla para voltar ao Menu...");
+                    Console.ReadKey();
                     Menu();
                 } else {
                     Console.WriteLine("Insira valores válidos válido");
