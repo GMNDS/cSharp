@@ -1,4 +1,5 @@
 # Cronômetro
+![Cronometro](./assets/stopwatch.png)
 
 Esse é um cronômetro em CLI que usei para praticar a linguagem C#
 
